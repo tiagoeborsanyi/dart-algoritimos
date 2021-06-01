@@ -9,10 +9,25 @@ class Fila {
     items[count] = element;
     count += 1;
   }
+
+  Map<int, String?> dequeue() {
+    if (isEmpty()) {
+      return {};
+    }
+    var result = {lowestCount: items[lowestCount]};
+    items.remove(lowestCount);
+    lowestCount++;
+    return result;
+  }
+
+  bool isEmpty() {
+    return count - lowestCount == 0;
+  }
 }
 
 void main(List<String> arguments) {
   var f = Fila();
   f.enqueue('joao');
-  print(f.items);
+  print(f.dequeue());
+  print(f.dequeue());
 }
